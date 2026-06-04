@@ -1,0 +1,73 @@
+<odoo>
+
+    <record id="rrhh_planilla_view_list" model="ir.ui.view">
+        <field name="name">rrhh.planilla.view.list</field>
+        <field name="model">rrhh.planilla</field>
+        <field name="arch" type="xml">
+            <list string="Planillas">
+                <field name="name"/>
+                <field name="descripcion"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="rrhh_planilla_view_form" model="ir.ui.view">
+        <field name="name">rrhh.planilla.view.form</field>
+        <field name="model">rrhh.planilla</field>
+        <field name="arch" type="xml">
+            <form string="Planillas">
+                <group>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="descripcion"/>
+                    </group>
+                </group>
+                <notebook colspan="4">
+                    <page string="Columnas">
+                        <field name="columna_id">
+                            <list editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <field name="name"/>
+                                <field name="regla_id" widget="many2many_tags"/>
+                                <field name="entrada_id" widget="many2many_tags"/>
+                                <field name="sumar"/>
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+    <!--
+    <record id="view_planilla_columna_form" model="ir.ui.view">
+        <field name="name">planilla_columna.form</field>
+        <field name="model">rrhh.planilla.columna</field>
+        <field name="arch" type="xml">
+            <form string="Columnas">
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="regla_id" widget="many2many_tags"/>
+                    </group>
+                    <group>
+                        <field name="sumar"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+    -->
+    
+    <record id="rrhh_planilla_action" model="ir.actions.act_window">
+        <field name="name">Planilla</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">rrhh.planilla</field>
+        <field name="help">Configuración de planillas para generar reportes</field>
+    </record>
+
+    <menuitem action="rrhh_planilla_action" id="rrhh_planilla_menu" parent="hr_payroll.menu_hr_salary_configuration" sequence="2"/>
+
+</odoo>
